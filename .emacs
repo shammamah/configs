@@ -5,6 +5,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
 
 (setq inhibit-startup-screen t)
 
@@ -12,10 +14,17 @@
 (global-set-key "\C-cc" 'delete-window)
 (global-set-key "\C-cg" 'magit)
 (global-set-key "\C-cw" 'delete-trailing-whitespace)
+(global-set-key "\C-cd" 'dired-sidebar-toggle-sidebar)
 
 ;; variables
 (custom-set-variables
- '(package-selected-packages '(magit)))
+ '(package-selected-packages '(dired-sidebar use-package magit)))
+
+;;;;;;;;;;;
+;; dired ;;
+;;;;;;;;;;;
+
+(use-package dired-sidebar)
 
 ;;;;;;;;;;;
 ;; magit ;;
