@@ -17,6 +17,21 @@
 (custom-set-variables
  '(package-selected-packages '(magit)))
 
+;;;;;;;;;;;
+;; magit ;;
+;;;;;;;;;;;
+
+;; update magit buffers automatically
+(with-eval-after-load 'magit-mode
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+
+;;;;;;;;;;;;;
+;; orgmode ;;
+;;;;;;;;;;;;;
+
+(setq org-agenda-files '("~/Documents/org"))
+(setq org-todo-keywords
+      '((sequence "TODO" "STRT" "REVW" "|" "DONE" "CANC")))
 
 ;;;;;;;;;;;;;;;
 ;; cosmetics ;;
@@ -65,20 +80,3 @@
 	      ("CANC" :foreground "color-39" :weight bold)
        ))
 )
-
-
-;;;;;;;;;;;
-;; magit ;;
-;;;;;;;;;;;
-
-;; update magit buffers automatically
-(with-eval-after-load 'magit-mode
-  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
-
-;;;;;;;;;;;;;
-;; orgmode ;;
-;;;;;;;;;;;;;
-
-(setq org-agenda-files '("~/Documents/org"))
-(setq org-todo-keywords
-      '((sequence "TODO" "STRT" "REVW" "|" "DONE" "CANC")))
