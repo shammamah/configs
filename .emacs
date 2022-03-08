@@ -24,8 +24,28 @@
 
 ;; variables
 (custom-set-variables
- '(package-selected-packages '(dired-sidebar use-package magit)))
-
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(company helm dired-sidebar use-package magit))
+ '(org-agenda-prefix-format
+   '((agenda . "%-12t  %-10:c  ")
+     (todo . "%10:c %i ")
+     (tags . "%-8T %-3e")
+     (search . "%-3:e  ")))
+ '(org-agenda-remove-tags 'prefix)
+ '(org-agenda-sorting-strategy
+   '((agenda timestamp-up)
+     (todo priority-down effort-up)
+     (tags timestamp-up priority-down effort-up)
+     (search priority-down effort-up)))
+ '(org-agenda-sticky t)
+ '(org-agenda-todo-ignore-deadlines 'far)
+ '(org-agenda-window-setup 'current-window)
+ '(org-columns-default-format "%1PRIORITY %1EFFORT %65ITEM %TAGS")
+ '(org-startup-truncated t)
+)
 ;;;;;;;;;;;
 ;; dired ;;
 ;;;;;;;;;;;
@@ -44,9 +64,35 @@
 ;; orgmode ;;
 ;;;;;;;;;;;;;
 
+(require 'org-timeline)
+(setq org-startup-indented t)
+(setq org-agenda-start-with-log-mode t)
 (setq org-agenda-files '("~/Documents/org"))
 (setq org-todo-keywords
       '((sequence "TODO" "STRT" "REVW" "|" "DONE" "CANC")))
+(setq org-agenda-time-grid nil)
+(setq org-cycle-separator-lines 2)
+(setq org-log-states-order-reversed nil)
+(setq org-tags-match-list-sublevels nil)
+(setq org-agenda-use-tag-inheritance nil)
+
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (cond ((= n-not-done 0) "DONE")
+                    ((= n-done 0) "TODO")
+                    (t "STRT")))))
+
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
+(setq org-agenda-sorting-strategy
+      '(
+        (agenda priority-down effort-up)
+        (todo priority-down effort-up)
+        (tags priority-down effort-up)
+        (search priority-down effort-up)
+        )
+      )
 
 ;;;;;;;;;;;;;;;
 ;; cosmetics ;;
@@ -60,21 +106,23 @@
  '(font-lock-constant-face ((t (:foreground "brightblue"))))
  '(font-lock-keyword-face ((t (:foreground "green"))))
  '(font-lock-string-face ((t (:foreground "color-135"))))
-
- ;; commits... but magit cute
  '(git-commit-comment-branch-local ((t (:foreground "brightcyan"))))
  '(git-commit-comment-file ((t (:foreground "color-162"))))
  '(git-commit-comment-heading ((t (:foreground "white"))))
  '(git-commit-summary ((t (:foreground "brightwhite"))))
-
- ;; diffs... but magit cute
  '(magit-diff-file-heading-highlight ((t (:extend t :background "color-161" :foreground "white" :weight bold))))
  '(magit-section-heading ((t (:extend t :foreground "brightblue" :weight bold))))
  '(magit-section-heading-selection ((t (:extend t :foreground "white"))))
  '(magit-section-highlight ((t (:extend t :background "color-218" :foreground "black" :weight bold))))
-
- ;; orgmode
+ '(org-agenda-calendar-event ((t (:inherit default :foreground "color-147"))))
+ '(org-agenda-clocking ((t (:background "brightblue" :foreground "black"))))
+ '(org-agenda-date-today ((t (:foreground "brightwhite" :slant italic :weight bold))))
+ '(org-agenda-done ((t (:foreground "white"))))
+ '(org-agenda-structure ((t (:foreground "white"))))
  '(org-checkbox-statistics-todo ((t (:foreground "color-161"))))
+ '(org-column ((t (:strike-through nil :underline nil :slant normal :weight normal))))
+ '(org-date ((t (:foreground "gray59" :underline t))))
+ '(org-done ((t (:foreground "SpringGreen1" :weight bold))))
  '(org-headline-done ((t (:foreground "white"))))
  '(org-level-1 ((t (:extend nil :foreground "color-85" :weight bold))))
  '(org-level-2 ((t (:extend nil :foreground "brightwhite"))))
@@ -83,7 +131,13 @@
  '(org-level-5 ((t (:extend nil :foreground "color-146"))))
  '(org-level-6 ((t (:extend nil :foreground "color-152"))))
  '(org-level-7 ((t (:extend nil :foreground "white"))))
- '(org-level-8 ((t (:extend nil :foreground "white")))))
+ '(org-level-8 ((t (:extend nil :foreground "white"))))
+ '(org-link ((t (:inherit nil :foreground "turquoise1" :underline t))))
+ '(org-timeline-block ((t (:inherit nil :background "gray63"))))
+ '(org-timeline-elapsed ((t (:inherit nil :stipple "" :background "gray26" :foreground "gray96"))))
+ '(org-todo ((t (:foreground "orange red" :weight bold))))
+ '(org-upcoming-deadline ((t (:foreground "snow1"))))
+ '(org-warning ((t (:foreground "brightmagenta")))))
 
 ;; orgmode todo headers
 (setq org-todo-keyword-faces
