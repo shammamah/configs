@@ -60,6 +60,13 @@
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 
+;;;;;;;;;;
+;; helm ;;
+;;;;;;;;;;
+
+(use-package helm
+  :config (helm-mode))
+
 ;;;;;;;;;;;;;
 ;; orgmode ;;
 ;;;;;;;;;;;;;
