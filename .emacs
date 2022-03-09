@@ -69,7 +69,7 @@
  '(org-columns-default-format "%1PRIORITY %1EFFORT %65ITEM %TAGS")
  '(org-startup-truncated t)
  '(package-selected-packages
-   '(company-jedi company helm dired-sidebar use-package magit)))
+   '(projectile flycheck company-jedi company helm dired-sidebar use-package magit)))
 
 ;;;;;;;;;;;
 ;; dired ;;
@@ -84,6 +84,12 @@
 ;; update magit buffers automatically
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+
+;;;;;;;;;;;;;;
+;; flycheck ;;
+;;;;;;;;;;;;;;
+
+(global-flycheck-mode)
 
 ;;;;;;;;;;
 ;; helm ;;
