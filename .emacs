@@ -45,6 +45,7 @@
 (global-set-key (kbd "C-;") 'other-window)
 (global-set-key "\C-ce" 'org-set-effort)
 (global-set-key "\C-c\C-f" 'helm-find)
+(global-set-key "\C-ct" 'ansi-term)
 
 ;; variables
 (custom-set-variables
@@ -205,3 +206,5 @@
 	      ("CANC" :foreground "color-39" :weight bold)
        ))
 )
+
+(dired-sidebar-show-sidebar)
