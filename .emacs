@@ -9,8 +9,10 @@
              '("melpa" . "http://melpa.org/packages/") t)
 
 (setq inhibit-startup-screen t)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (global-auto-revert-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'default-frame-alist '(background-color . "#232024"))
 
 ;; ITERM2 MOUSE SUPPORT
 (unless window-system
