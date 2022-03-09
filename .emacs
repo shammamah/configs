@@ -28,7 +28,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(company helm dired-sidebar use-package magit))
  '(org-agenda-prefix-format
    '((agenda . "%-12t  %-10:c  ")
      (todo . "%10:c %i ")
@@ -45,7 +44,9 @@
  '(org-agenda-window-setup 'current-window)
  '(org-columns-default-format "%1PRIORITY %1EFFORT %65ITEM %TAGS")
  '(org-startup-truncated t)
-)
+ '(package-selected-packages
+   '(company-jedi company helm dired-sidebar use-package magit)))
+
 ;;;;;;;;;;;
 ;; dired ;;
 ;;;;;;;;;;;
@@ -66,6 +67,20 @@
 
 (use-package helm
   :config (helm-mode))
+
+;;;;;;;;;;
+;; jedi ;;
+;;;;;;;;;;
+
+(use-package jedi-core
+  :ensure t
+  :config
+  (setq python-environment-directory "~/.emacs.d/.python-environments"))
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;;;;;;;;;;;;;
 ;; orgmode ;;
