@@ -192,7 +192,8 @@
  '(org-timeline-elapsed ((t (:inherit nil :stipple "" :background "gray26" :foreground "gray96"))))
  '(org-todo ((t (:foreground "orange red" :weight bold))))
  '(org-upcoming-deadline ((t (:foreground "snow1"))))
- '(org-warning ((t (:foreground "brightmagenta")))))
+ '(org-warning ((t (:foreground "brightmagenta"))))
+ '(vertical-border ((t (:background "brightblack" :foreground "brightblack")))))
 
 ;; orgmode todo headers
 (setq org-todo-keyword-faces
