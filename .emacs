@@ -172,6 +172,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(button ((t (:inherit link :foreground "CadetBlue1"))))
  '(custom-documentation ((t (:foreground "gray98"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "brightblack"))))
  '(font-lock-comment-face ((t (:foreground "magenta"))))
@@ -182,6 +183,7 @@
  '(git-commit-comment-file ((t (:foreground "color-162"))))
  '(git-commit-comment-heading ((t (:foreground "white"))))
  '(git-commit-summary ((t (:foreground "brightwhite"))))
+ '(link ((t (:foreground "color-48" :underline t))))
  '(magit-diff-file-heading-highlight ((t (:extend t :background "color-161" :foreground "white" :weight bold))))
  '(magit-section-heading ((t (:extend t :foreground "brightblue" :weight bold))))
  '(magit-section-heading-selection ((t (:extend t :foreground "white"))))
@@ -196,6 +198,7 @@
  '(org-date ((t (:foreground "gray59" :underline t))))
  '(org-done ((t (:foreground "SpringGreen1" :weight bold))))
  '(org-headline-done ((t (:foreground "white"))))
+ '(org-hide ((t (:foreground "#000000"))))
  '(org-level-1 ((t (:extend nil :foreground "color-85" :weight bold))))
  '(org-level-2 ((t (:extend nil :foreground "brightwhite"))))
  '(org-level-3 ((t (:extend nil :foreground "color-218"))))
