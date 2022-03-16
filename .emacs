@@ -54,6 +54,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-clockreport-parameter-plist (quote (:link t :maxlevel 5 :hidefiles t)))
+ '(org-agenda-custom-commands
+   (quote
+    (("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)
+     ("T" "Todo tasks" tags "TODO=\"TODO\"" nil)
+     ("r" "In review" tags "TODO=\"REVW\"" nil)
+     ("b" "Blocked" tags "TODO=\"BLCK\"" nil)
+     ("A" "Top priority" tags "TODO=\"TODO\"+priority=\"A\"|TODO=\"STRT\"+priority=\"A\""))))
  '(org-agenda-prefix-format
    '((agenda . "%-12t  %-10:c  ")
      (todo . "%10:c %i ")
@@ -65,9 +76,16 @@
      (todo priority-down effort-up)
      (tags timestamp-up priority-down effort-up)
      (search priority-down effort-up)))
+ '(org-agenda-span (quote day))
  '(org-agenda-sticky t)
  '(org-agenda-todo-ignore-deadlines 'far)
  '(org-agenda-window-setup 'current-window)
+ '(org-clock-clocktable-default-properties
+   (quote
+    (:maxlevel 5 :block yesterday :scope agenda :hidefiles t :fileskip0 t :link t :stepskip0 t)))
+ '(org-clocktable-defaults
+   (quote
+    (:maxlevel 5 :lang "en" :scope agenda :block yesterday :wstart 1 :mstart 1 :tstart nil :tend nil :step nil :stepskip0 t :fileskip0 t :tags nil :emphasize nil :link t :narrow 40! :indent t :formula nil :timestamp nil :level nil :tcolumns nil :formatter nil)))
  '(org-columns-default-format "%1PRIORITY %1EFFORT %65ITEM %TAGS")
  '(org-export-headline-levels 6)
  '(org-export-with-drawers (quote (not "LOGBOOK" "PROPERTIES")))
