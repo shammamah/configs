@@ -41,11 +41,12 @@
 (global-set-key "\C-cg" 'magit)
 (global-set-key "\C-cw" 'delete-trailing-whitespace)
 (global-set-key "\C-cd" 'dired-sidebar-toggle-sidebar)
-(global-set-key "\C-c\C-c" 'comment-or-uncomment-region)
-(global-set-key (kbd "C-;") 'other-window)
+(global-set-key "\C-c/" 'comment-or-uncomment-region)
 (global-set-key "\C-ce" 'org-set-effort)
 (global-set-key "\C-c\C-f" 'helm-find)
 (global-set-key "\C-ct" 'ansi-term)
+(global-set-key "\C-cb" 'bookmark-jump)
+(windmove-default-keybindings) ;; S-<direction> to switch buffers
 
 ;; variables
 (custom-set-variables
